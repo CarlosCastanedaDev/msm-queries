@@ -73,7 +73,7 @@
     </td>
   <td><%= the_movie.year %></td>
   <td>
-    <% matching_directors = Director.where({ :id = the_movie.director_id}) %>
+    <% matching_directors = Director.where({ :id => the_movie.director_id}) %>
 
     <% the_director = matching_directors.at(0) %>
 
