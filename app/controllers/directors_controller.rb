@@ -14,14 +14,9 @@ class DirectorsController < ApplicationController
   end
 
   def eldest
-    matching_record = Director.all.order({ :dob => :asc })
+    @eldest_director = Director.order(dob: :asc).where.not(dob: nil).first
 
-    @eldest_name = matching_record.first.name
-    @eldest_id = matching_record.first.id
-    eldest_age = matching_record.first.dob
-    @eldest_date = eldest_age.strftime("%B %d, %Y")
-    # @eldest_date = eldest_age.nil? ? "error" : eldest_age.strftime("%B %d, %Y")
-
+    pp @eldest_director
     render({ :template => "director_templates/eldest"})
   end
 
